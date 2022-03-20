@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Countries of Origin for Planes within Specified Area</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<script type="text/javascript">
+    window.onload = setupRefresh;
+
+    function setupRefresh() {
+        setTimeout("refreshPage();", 5000); // refresh rate in milliseconds
+    }
+
+    function refreshPage() {
+        window.location = location.href;
+    }
+</script>
+<div class="countryList" th:unless="${#lists.isEmpty(countries)}">
+
+    <h2>Countries (sorted alphabetically)</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Country</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="country : ${countries}">
+            <td th:text="${country}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

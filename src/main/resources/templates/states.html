@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Position Report</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<script type="text/javascript">
+    window.onload = setupRefresh;
+
+    function setupRefresh() {
+        setTimeout("refreshPage();", 5000); // refresh rate in milliseconds
+    }
+
+    function refreshPage() {
+        window.location = location.href;
+    }
+</script>
+<div class="states" th:unless="${#lists.isEmpty(positions)}">
+
+    <h2>Current Aircraft Positions</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ICAO Code</th>
+            <th>Callsign</th>
+            <th>Origin</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Baro Altitude</th>
+            <th>Geo Altitude</th>
+            <th>Vert Rate</th>
+            <th>Speed</th>
+            <th>Track</th>
+            <th>Squawk</th>
+<!--            <th>SPI</th>-->
+<!--            <th>Source</th>-->
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pos : ${positions}">
+            <td th:text="${pos.icao24}"></td>
+            <td th:text="${pos.callsign}"></td>
+            <td th:text="${pos.origin_country}"></td>
+            <td th:text="${pos.latitude}"></td>
+            <td th:text="${pos.longitude}"></td>
+            <td th:text="${pos.baro_altitude}"></td>
+            <td th:text="${pos.geo_altitude}"></td>
+            <td th:text="${pos.vertical_rate}"></td>
+            <td th:text="${pos.velocity}"></td>
+            <td th:text="${pos.true_track}"></td>
+            <td th:text="${pos.squawk}"></td>
+<!--            <td th:text="${pos.spi}"></td>-->
+<!--            <td th:text="${pos.position_source}"></td>-->
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
