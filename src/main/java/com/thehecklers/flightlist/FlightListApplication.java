@@ -21,11 +21,11 @@ public class FlightListApplication {
 }
 
 @Controller
-class TestListController {
+class ListController {
     private final WebClient client = WebClient.create("http://localhost:9090");
 
-    @GetMapping("/states")
-    String getStates(Model model,
+    @GetMapping("/positions")
+    String getPositions(Model model,
                      @RequestParam(required = false) String oc,
                      @RequestParam(required = false) String tracklo,
                      @RequestParam(required = false) String trackhi) {
@@ -36,12 +36,12 @@ class TestListController {
                 (trackParams.length() > 0 ? "&" + trackParams : "");
 
         model.addAttribute("positions", client.get()
-                .uri("/states" + (allParams.length() > 0 ? "?" + allParams : ""))
+                .uri("/positions" + (allParams.length() > 0 ? "?" + allParams : ""))
                 .retrieve()
                 .bodyToFlux(Position.class)
                 .toIterable());
 
-        return "states";
+        return "displaypositions";
     }
 
     @GetMapping("/countries")
@@ -52,7 +52,7 @@ class TestListController {
                 .bodyToFlux(String.class)
                 .toIterable());
 
-        return "countries";
+        return "displaycountries";
     }
 }
 
