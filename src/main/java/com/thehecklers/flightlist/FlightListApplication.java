@@ -1,9 +1,5 @@
 package com.thehecklers.flightlist;
 
-//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-//import lombok.AllArgsConstructor;
-//import lombok.Data;
-//import lombok.NoArgsConstructor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
@@ -70,24 +66,3 @@ record Position(String icao24,
                 String squawk,
                 boolean spi,
                 int position_source) {}
-
-/*
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-class Position {
-    private String icao24,
-            callsign,
-            origin_country;
-    private float longitude,
-            latitude,
-            baro_altitude,
-            velocity,
-            true_track,
-            vertical_rate,
-            geo_altitude;
-    private String squawk;
-    private boolean spi;
-    private int position_source;
-}
-*/
