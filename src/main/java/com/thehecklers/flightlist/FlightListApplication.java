@@ -35,8 +35,7 @@ class ListController {
         model.addAttribute("positions", client.get()
                 .uri("/positions" + (allParams.length() > 0 ? "?" + allParams : ""))
                 .retrieve()
-                .bodyToFlux(Position.class)
-                .toIterable());
+                .bodyToFlux(Position.class));
 
         return "displaypositions";
     }
@@ -46,8 +45,7 @@ class ListController {
         model.addAttribute("countries", client.get()
                 .uri("/countries")
                 .retrieve()
-                .bodyToFlux(String.class)
-                .toIterable());
+                .bodyToFlux(String.class));
 
         return "displaycountries";
     }
